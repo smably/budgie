@@ -1,0 +1,86 @@
+{
+  "name": "Transaction",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "isReconciled": {
+      "type": "boolean",
+      "required": true
+    },
+    "isRecurring": {
+      "type": "boolean",
+      "required": true
+    },
+    "rrule": {
+      "type": "object"
+    },
+    "rdate": {
+      "type": [
+        "date"
+      ]
+    },
+    "exdate": {
+      "type": [
+        "date"
+      ]
+    },
+    "parentId": {
+      "type": "string"
+    },
+    "sortIndex": {
+      "type": "number"
+    },
+    "amount": {
+      "type": "number"
+    },
+    "sourceAccountId": {
+      "type": "string"
+    },
+    "destinationAccountId": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "colour": {
+      "type": "string"
+    },
+    "tags": {
+      "type": [
+        "string"
+      ]
+    }
+  },
+  "validations": [],
+  "relations": {
+    "sourceAccount": {
+      "type": "belongsTo",
+      "model": "Account",
+      "foreignKey": "sourceAccountId"
+    },
+    "destinationAccount": {
+      "type": "belongsTo",
+      "model": "Account",
+      "foreignKey": "destinationAccountId"
+    },
+    "parent": {
+      "type": "belongsTo",
+      "model": "Transaction",
+      "foreignKey": "parentId"
+    },
+    "children": {
+      "type": "hasMany",
+      "model": "Transaction",
+      "foreignKey": "parentId"
+    }
+  },
+  "acls": [],
+  "methods": []
+}

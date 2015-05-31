@@ -1,0 +1,57 @@
+{
+  "name": "Account",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "isSource": {
+      "type": "boolean",
+      "required": true
+    },
+    "isDestination": {
+      "type": "boolean",
+      "required": true
+    },
+    "isPrimary": {
+      "type": "boolean",
+      "required": true
+    },
+    "accountInfo": {
+      "type": {
+        "institutionName": {
+          "type": "string"
+        },
+        "accountType": {
+          "type": "string"
+        },
+        "accountNumber": {
+          "type": "number"
+        },
+        "balance": {
+          "type": "number"
+        },
+        "balanceDate": {
+          "type": "date"
+        }
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "withdrawals": {
+      "type": "hasMany",
+      "model": "Transaction",
+      "foreignKey": "sourceAccountId"
+    },
+    "deposits": {
+      "type": "hasMany",
+      "model": "Transaction",
+      "foreignKey": "destinationAccountId"
+    }
+  },
+  "acls": [],
+  "methods": []
+}
