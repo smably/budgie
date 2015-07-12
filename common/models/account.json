@@ -3,41 +3,15 @@
   "base": "PersistedModel",
   "idInjection": true,
   "properties": {
-    "label": {
-      "type": "string",
-      "required": true
-    },
-    "isSource": {
-      "type": "boolean",
-      "required": true
-    },
-    "isDestination": {
-      "type": "boolean",
-      "required": true
-    },
-    "isPrimary": {
-      "type": "boolean",
-      "required": true
-    },
-    "accountInfo": {
-      "type": {
-        "institutionName": {
-          "type": "string"
-        },
-        "accountType": {
-          "type": "string"
-        },
-        "accountNumber": {
-          "type": "number"
-        },
-        "balance": {
-          "type": "number"
-        },
-        "balanceDate": {
-          "type": "date"
-        }
-      }
-    }
+    "label":            { "type": "string",   "required": true },
+    "isSource":         { "type": "boolean",  "required": true },
+    "isDestination":    { "type": "boolean",  "required": true },
+    "isPrimary":        { "type": "boolean",  "required": true },
+
+    "institutionName":  { "type": "string" },
+    "accountType":      { "type": "string" },
+    "accountNumber":    { "type": "string" },
+    "initialBalance":   { "type": "number" }
   },
   "validations": [],
   "relations": {

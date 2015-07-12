@@ -3,60 +3,21 @@
   "base": "PersistedModel",
   "idInjection": true,
   "properties": {
-    "date": {
-      "type": "date",
-      "required": true
-    },
-    "isReconciled": {
-      "type": "boolean",
-      "required": true
-    },
-    "isRecurring": {
-      "type": "boolean",
-      "required": true
-    },
-    "rrule": {
-      "type": "object"
-    },
-    "rdate": {
-      "type": [
-        "date"
-      ]
-    },
-    "exdate": {
-      "type": [
-        "date"
-      ]
-    },
-    "parentId": {
-      "type": "string"
-    },
-    "sortIndex": {
-      "type": "number"
-    },
-    "amount": {
-      "type": "number"
-    },
-    "sourceAccountId": {
-      "type": "string"
-    },
-    "destinationAccountId": {
-      "type": "string"
-    },
-    "label": {
-      "type": "string"
-    },
-    "notes": {
-      "type": "string"
-    },
-    "colour": {
-      "type": "string"
-    },
-    "tags": {
-      "type": [
-        "string"
-      ]
-    }
+    "dtstart": { "type": "date", "required": true },
+    "sortIndex": { "type": "number" },
+    "amount": { "type": "number" },
+    "sourceAccountId": { "type": "string" },
+    "destinationAccountId": { "type": "string" },
+
+    "rrule": { "type": "string" },
+    "exdate": { "type": ["string"] },
+    "parentId": { "type": "string" },
+
+    "isReconciled": { "type": "boolean", "required": true },
+    "label": { "type": "string" },
+    "notes": { "type": "string" },
+    "colour": { "type": "string" },
+    "tags": { "type": [ "string" ] }
   },
   "validations": [],
   "relations": {

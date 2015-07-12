@@ -19,20 +19,8 @@ module.exports = function(Transaction) {
   var validateTransaction = function(transaction) {
     var conditions = [
       {
-        test: (!transaction.isRecurring || !transaction.isReconciled),
+        test: (!(transaction.isRecurring && transaction.isReconciled)),
         failureMessage: "Can't mark a recurring transaction as reconciled"
-      },
-      {
-        test: (transaction.rrule || transaction.rdate || !transaction.isRecurring),
-        failureMessage: "Recurrence rule or recurrence dates are required for recurring transactions"
-      },
-      {
-        test: (!transaction.parentId || !transaction.isReconciled),
-        failureMessage: "Can't mark a child of a recurring transaction as reconciled"
-      },
-      {
-        test: (!transaction.parentId || !transaction.isRecurring),
-        failureMessage: "Can't mark a child of a recurring transaction as recurring"
       },
       {
         test: (transaction.parentId || typeof transaction.sortIndex !== undefined),
