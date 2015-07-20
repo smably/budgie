@@ -1,8 +1,15 @@
 module.exports = function(Transaction) {
   Transaction.observe('before save', function(context, next) {
+    var newInstance;
 
     if (context.instance) {
-      var validation = validateTransaction(context.instance);
+      newInstance = context.instance;
+    } else if (context.data) {
+      newInstance = context.data;
+    }
+
+    if (newInstance) {
+      var validation = validateTransaction(newInstance);
 
       if (validation.validated) {
         next();
@@ -13,7 +20,13 @@ module.exports = function(Transaction) {
 
         next(err);
       }
-    };
+    } else {
+      var err = new Error(Transaction);
+      err.status = 500;
+      err.message = "Instance not found.";
+
+      next(err);
+    }
   });
 
   var validateTransaction = function(transaction) {
